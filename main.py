@@ -15,8 +15,11 @@ while True:
     if opcao == 1:
         os.system("cls")
         continue
+    
     elif opcao == 2:
+        os.system("cls")
         print("\n\033[1;31mProgama encerrado.\033[m")
+        break
 
     else:
         print("Valor inválido.")

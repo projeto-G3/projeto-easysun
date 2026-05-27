@@ -1,6 +1,7 @@
 import src.menus as ui
 import os
 import uuid
+
 def pedir_float(mensagem):
     while True:
         try:
@@ -28,8 +29,30 @@ def cadastrar_orcamento(escolha):
     with open("data/orcamentos.csv", "a", newline = "", encoding = "utf-8") as arquivo:
         if not arquivo_existe:
             arquivo.write("id_orcamento,marca_modulo,modelo_modulo,marca_inversor,modelo_inversor,potencia_kwp,geracao_anual,preco_total,payback,cidade\n")
-        arquivo.write(f"{id_orcamento}{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade}\n")
+        arquivo.write(f"{id_orcamento},{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade}\n")
 
 def verificar_orcamentos(escolha):
     if escolha == 2:
         os.system("cls")
+        id_verificacao = input("Informe o ID do orçamento que deseja vizualizar: ")
+
+        with open("data/orcamentos.csv", "r", encoding = "utf-8") as arquivo:
+            linhas = arquivo.readlines()
+
+        for linha in linhas:
+            campos = linha.split(",")
+            if id_verificacao == campos[0]:
+                print("=" * 40)
+                print(f"  ORÇAMENTO {campos[0]}")
+                print("=" * 40)
+                print(f"  Módulo:      {campos[1]} - {campos[2]}")
+                print(f"  Inversor:    {campos[3]} - {campos[4]}")
+                print(f"  Potência:    {campos[5]} kWp")
+                print(f"  Geração:     {campos[6]} MWh/ano")
+                print(f"  Preço total: R$ {campos[7]}")
+                print(f"  Payback:     {campos[8]} anos")
+                print(f"  Cidade:      {campos[9]}")
+                print("=" * 40)
+            
+            else:
+                print("Id inválido.")
