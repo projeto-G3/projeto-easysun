@@ -60,8 +60,8 @@ def verificar_orcamentos(escolha):
         if orcamento_encontrado == 0:
             os.system("cls")
             print("\nId inválido.")
-            else:
-                print("Id inválido.")
+        else:
+            print("Id inválido.")
 
 def atualizar_orcamento(escolha):
     if escolha == 3:
@@ -130,3 +130,36 @@ def atualizar_orcamento(escolha):
 def excluir_orcamento(escolha):
     if escolha == 4:
         os.system("cls")
+
+        id_deletar = input("Informe o ID do orçamento que deseja deletar: ")
+
+        with open("data/orcamentos.csv", "r", encoding="utf-8") as arquivo:
+            linhas = arquivo.readlines()
+
+        encontrado = False
+        linhas_novas = []
+
+        for linha in linhas:
+            campos = linha.strip().split(",")
+
+            if campos[0] == "id_orcamento":
+                linhas_novas.append(linha)
+                continue
+
+            if campos[0] == id_deletar:
+                encontrado = True
+                confirmacao = input(f"\nTem certeza que deseja deletar o orçamento {id_deletar}? (s/n): ").lower()
+                if confirmacao != "s":
+                    print("\nOperação cancelada.")
+                    return
+            else:
+                linhas_novas.append(linha)
+
+        if not encontrado:
+            print("ID não encontrado.")
+            return
+
+        with open("data/orcamentos.csv", "w", encoding="utf-8") as arquivo:
+            arquivo.writelines(linhas_novas)
+
+        print(f"Orçamento {id_deletar} deletado com sucesso!")
