@@ -60,3 +60,73 @@ def verificar_orcamentos(escolha):
         if orcamento_encontrado == 0:
             os.system("cls")
             print("\nId inválido.")
+            else:
+                print("Id inválido.")
+
+def atualizar_orcamento(escolha):
+    if escolha == 3:
+        os.system("cls")
+
+        id_atualizacao = input("Escolha o ID de orçamento que deseja atualizar: ")
+
+        with open("data/orcamentos.csv", "r", encoding="utf-8") as arquivo:
+            linhas = arquivo.readlines()
+
+        encontrado = False
+        linhas_novas = []
+
+        def pedir_float_enter(mensagem, atual):
+            while True:
+                entrada = input(mensagem)
+
+                if entrada == "":
+                    return atual
+
+                try:
+                    return str(float(entrada))
+
+                except ValueError:
+                    print("\nInforme um valor numérico válido!")
+
+        for linha in linhas:
+            campos = linha.strip().split(",")
+
+            if campos[0] == "id_orcamento":
+                linhas_novas.append(linha)
+                continue
+
+            if campos[0] == id_atualizacao:
+                encontrado = True
+
+                print(f"\nOrçamento {id_atualizacao} encontrado!")
+                print("Para manter o valor atual, deixe o campo em branco.\n")
+
+                marca_modulo = input(f"Marca dos módulos [{campos[1]}]: ").lower() or campos[1]
+                modelo_modulo = input(f"Modelo dos módulos [{campos[2]}]: ").lower() or campos[2]
+                marca_inversor = input(f"Marca do inversor [{campos[3]}]: ").lower() or campos[3]
+                modelo_inversor = input(f"Modelo do inversor [{campos[4]}]: ").lower() or campos[4]
+                potencia_kwp = pedir_float_enter(f"Potência em KWP [{campos[5]}]: ",campos[5])
+                geracao_anual = pedir_float_enter(f"Geração anual [{campos[6]}]: ",campos[6])
+                preco_total = pedir_float_enter(f"Preço total R$ [{campos[7]}]: ",campos[7])
+                payback = pedir_float_enter(f"Payback [{campos[8]}]: ",campos[8])
+                cidade = input(f"Cidade [{campos[9]}]: ").capitalize() or campos[9]
+
+                nova_linha = (f"{id_atualizacao},{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade}\n")
+                linhas_novas.append(nova_linha)
+
+            else:
+                linhas_novas.append(linha)
+
+        if not encontrado:
+            print("ID não encontrado.")
+            return
+
+        # Reescreve arquivo
+        with open("data/orcamentos.csv", "w", encoding="utf-8") as arquivo:
+            arquivo.writelines(linhas_novas)
+
+        print(f"Orçamento {id_atualizacao} atualizado com sucesso!")
+
+def excluir_orcamento(escolha):
+    if escolha == 4:
+        os.system("cls")
