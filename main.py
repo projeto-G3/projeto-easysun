@@ -10,6 +10,12 @@ while True:
 
     elif escolha == 2:
         fc.verificar_orcamentos(escolha)
+    
+    elif escolha == 3:
+        fc.atualizar_orcamento(escolha)
+    
+    elif escolha == 4:
+        fc.excluir_orcamento(escolha)
 
     opcao = int(input(ui.MENU_SAIDA))
     if opcao == 1:
