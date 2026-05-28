@@ -17,6 +17,11 @@ while True:
     elif escolha == 4:
         fc.excluir_orcamento(escolha)
 
+    elif escolha == 5:
+        os.system("cls")
+        print("\n\033[1;31mProgama encerrado.\033[m")
+        break
+
     opcao = int(input(ui.MENU_SAIDA))
     if opcao == 1:
         os.system("cls")
@@ -28,7 +33,7 @@ while True:
         break
 
     else:
-        print("Valor inválido.")
+        print("\nValor inválido.")
 
     if escolha < 1 or escolha > 5:
         os.system("cls")

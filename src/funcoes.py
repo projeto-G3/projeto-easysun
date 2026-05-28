@@ -39,9 +39,12 @@ def verificar_orcamentos(escolha):
         with open("data/orcamentos.csv", "r", encoding = "utf-8") as arquivo:
             linhas = arquivo.readlines()
 
+        orcamento_encontrado = 0
+
         for linha in linhas:
             campos = linha.split(",")
             if id_verificacao == campos[0]:
+                orcamento_encontrado + 1
                 print("=" * 40)
                 print(f"  ORÇAMENTO {campos[0]}")
                 print("=" * 40)
@@ -54,6 +57,9 @@ def verificar_orcamentos(escolha):
                 print(f"  Cidade:      {campos[9]}")
                 print("=" * 40)
             
+        if orcamento_encontrado == 0:
+            os.system("cls")
+            print("\nId inválido.")
             else:
                 print("Id inválido.")
 
