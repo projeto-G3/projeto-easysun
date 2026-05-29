@@ -13,13 +13,6 @@ EasySun é uma plataforma web que permite ao consumidor analisar orçamentos de 
 - **🤖 Análise Inteligente** — Avaliação técnica dos equipamentos, estimativa de geração energética e cálculo do payback real do sistema.
 
 ---
-# ☀️ EasySun — Solar Truth Analyzer
-
-> **Descubra a verdade sobre seu orçamento solar.**
-
-EasySun é uma plataforma web que permite ao consumidor analisar orçamentos de energia solar recebidos de empresas instaladoras, identificando se o payback prometido é real, se os componentes são de qualidade e se o preço é justo — com base em dados técnicos reais.
-
----
 
 ## 🚀 Funcionalidades
 
