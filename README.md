@@ -29,3 +29,7 @@ IA / Backend (Python - em desenvolvimento)
 -Cecília de Moraes
 -Suri Savitri
 -Sofia Druenem
+
+🌞 Nossa Missão
+
+Democratizar o acesso à informação no mercado de energia solar, ajudando consumidores a investirem com mais confiança, transparência e segurança.
