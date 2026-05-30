@@ -1,20 +1,4 @@
 # ☀️ EasySun — Solar Truth Analyzer
-
-> **Descubra a verdade sobre seu orçamento solar.**
-
-EasySun é uma plataforma web que permite ao consumidor analisar orçamentos de energia solar recebidos de empresas instaladoras, identificando se o payback prometido é real, se os componentes são de qualidade e se o preço é justo — com base em dados técnicos reais.
-
----
-
-## 🚀 Funcionalidades
-
-- **📄 Upload de Orçamentos em PDF** — Envie o orçamento recebido e permita que a IA extraia automaticamente as informações relevantes.
-- **✍️ Preenchimento Manual** — Insira os dados do orçamento por meio de um formulário simples e intuitivo.
-- **🤖 Análise Inteligente** — Avaliação técnica dos equipamentos, estimativa de geração energética e cálculo do payback real do sistema.
-
----
-# ☀️ EasySun — Solar Truth Analyzer
-
 > **Descubra a verdade sobre seu orçamento solar.**
 
 EasySun é uma plataforma web que permite ao consumidor analisar orçamentos de energia solar recebidos de empresas instaladoras, identificando se o payback prometido é real, se os componentes são de qualidade e se o preço é justo — com base em dados técnicos reais.
@@ -29,17 +13,6 @@ EasySun é uma plataforma web que permite ao consumidor analisar orçamentos de 
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-
-| Camada | Tecnologia |
-|---|---|
-| Backend / Lógica | Python |
-| Armazenamento | CSV |
-| Versionamento | Git + GitHub |
-
----
-
-## 📁 Estrutura do Projeto (CRUD)
 ## 🛠️ Tecnologias Utilizadas
 
 | Camada | Tecnologia |
@@ -70,10 +43,8 @@ easysun-crud/
 ```bash
 # Clone o repositório
 git clone https://github.com/seu-usuario/easysun-crud.git
-
 # Acesse a pasta do projeto
 cd easysun-crud
-
 # Execute o programa
 python main.py
 ```
