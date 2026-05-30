@@ -16,11 +16,14 @@ while True:
     
     elif escolha == 4:
         fc.excluir_orcamento(escolha)
+<<<<<<< HEAD
 
     elif escolha == 5:
         os.system("cls")
         print("\n\033[1;31mProgama encerrado.\033[m")
         break
+=======
+>>>>>>> 1697b1b4dad6ba9af7a682b5faa05a54543f1f60
 
     opcao = int(input(ui.MENU_SAIDA))
     if opcao == 1:
