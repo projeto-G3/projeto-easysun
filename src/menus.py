@@ -7,7 +7,8 @@ MENU_PRINCIPAL = """
 ║  [2] - Listar orçamentos         ║
 ║  [3] - Atualizar orçamento       ║
 ║  [4] - Excluir orçamento         ║
-║  [5] - Sair                      ║
+║  [5] - Score orçamento           ║
+║  [6] - Sair                      ║
 ╚══════════════════════════════════╝
 
 Qual opção você deseja: """
