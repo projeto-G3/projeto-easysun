@@ -34,9 +34,11 @@ def cadastrar_orcamento(escolha):
     if escolha == 1:
         os.system("cls")
         while True:
-            cpf_cnpj_orcamento = input("\nQual o CPF/CPNJ do orçamento: ")
+            print("===== CADASTRO ORÇAMENTO =====")
+            cpf_cnpj_orcamento = input("\nQual o CPF/CPNJ do orçamento: ").strip()
             cpf_cnpj_orcamento = cpf_cnpj_orcamento.replace("/", "").replace(".", "").replace("-","")
             if not cpf_cnpj_orcamento.isdigit() or (len(cpf_cnpj_orcamento) != 11 and len(cpf_cnpj_orcamento) != 14):
+                os.system("cls")
                 print("\nCPF/CNPJ inválido.")
                 continue
             else:
@@ -59,20 +61,22 @@ def cadastrar_orcamento(escolha):
         incidencia_solar = ler_ldr()
 
         
-    arquivo_existe = os.path.exists("data/orcamentos.csv")
+        arquivo_existe = os.path.exists("data/orcamentos.csv")
 
-    with open("data/orcamentos.csv", "a", newline = "", encoding = "utf-8") as arquivo:
-        if not arquivo_existe:
-            arquivo.write("cpf_cnpj_orcamento,marca_modulo,modelo_modulo,marca_inversor,modelo_inversor,potencia_kwp,geracao_anual,preco_total,payback,cidade,incidencia_solar\n")
-        arquivo.write(f"{cpf_cnpj_final},{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade},{incidencia_solar}\n")
+        with open("data/orcamentos.csv", "a", newline = "", encoding = "utf-8") as arquivo:
+            if not arquivo_existe:
+                arquivo.write("cpf_cnpj_orcamento,marca_modulo,modelo_modulo,marca_inversor,modelo_inversor,potencia_kwp,geracao_anual,preco_total,payback,cidade,incidencia_solar\n")
+            arquivo.write(f"{cpf_cnpj_final},{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade},{incidencia_solar}\n")
 
 def verificar_orcamentos(escolha):
     if escolha == 2:
         os.system("cls")
         while True:
             cpf_cnpj_verificacao = input("\nInforme o CPF/CNPJ do orçamento que deseja vizualizar: ")
+            os.system("cls")
             cpf_cnpj_verificacao = cpf_cnpj_verificacao.replace("/", "").replace(".", "").replace("-", "")
             if not cpf_cnpj_verificacao.isdigit() or (len(cpf_cnpj_verificacao) != 11 and len(cpf_cnpj_verificacao) != 14):
+                os.system("cls")
                 print("\nCPF/CNPJ inválido.")
                 continue
             else:
@@ -87,7 +91,7 @@ def verificar_orcamentos(escolha):
 
         orcamento_encontrado = []
 
-        for linha in linhas:
+        for linha in linhas[1:]:
             campos = linha.split(",")
             if cpf_cnpj_verificacao  == campos[0]:
                 orcamento_encontrado.append(campos)
@@ -107,7 +111,7 @@ def verificar_orcamentos(escolha):
                 print(f"  Geração:     {campos[6]} MWh/ano")
                 print(f"  Preço total: R$ {campos[7]}")
                 print(f"  Payback:     {campos[8]} anos")
-                print(f"  Cidade:      {campos[9]}")
+                print(f"  Cidade:      {campos[9].strip()}")    
                 print("=" * 40)
             
         else:
@@ -122,7 +126,7 @@ def verificar_orcamentos(escolha):
                     print(f"      Geração:      {campos[6]} MWh/ano")
                     print(f"      Preço total:  R$ {campos[7]}")
                     print(f"      Payback:      {campos[8]} anos")
-                    print(f"      Cidade:       {campos[9]}")
+                    print(f"      Cidade:       {campos[9].strip()}")
                     print(f"  {'-' * 38}")
 
 def atualizar_orcamento(escolha):
@@ -210,10 +214,6 @@ def atualizar_orcamento(escolha):
         nova_linha = (f"{cpf_cnpj_verificacao},{marca_modulo},{modelo_modulo},{marca_inversor},{modelo_inversor},{potencia_kwp},{geracao_anual},{preco_total},{payback},{cidade},{incidencia_solar}\n")
         linhas[indices_encontrados[escolha_idx]] = nova_linha
         linhas_novas = linhas
-
-        if not encontrado:
-            print("\nOrçamento não encontrado.")
-            return
 
         with open("data/orcamentos.csv", "w", encoding="utf-8") as arquivo:
             arquivo.writelines(linhas_novas)
@@ -308,7 +308,7 @@ def score_orcamento(escolha):
             linhas = arquivo.readlines()
             orcamentos_encontrados = []
 
-            for linha in linhas:
+            for linha in linhas[1:]:
                 campos = linha.strip().split(",")
                 if cpf_cnpj == campos[0]:
                     orcamentos_encontrados.append(campos)
@@ -321,15 +321,16 @@ def score_orcamento(escolha):
                 print(f"\n{len(orcamentos_encontrados)} orçamentos encontrados:")
                 for i, campos in enumerate(orcamentos_encontrados, start=1):
                     print(f"\n  [{i}] Módulo: {campos[1]} - {campos[2]} | Cidade: {campos[9].strip()}")
-                    while True:
-                        try:
-                            idx = int(input(f"\nEscolha o orçamento (1-{len(orcamentos_encontrados)}): "))
-                            if 1 <= idx <= len(orcamentos_encontrados):
-                                break
-                            print("\nEscolha inválida.")
+                    
+                while True:
+                    try:
+                        idx = int(input(f"\nEscolha o orçamento (1-{len(orcamentos_encontrados)}): "))
+                        if 1 <= idx <= len(orcamentos_encontrados):
+                            break
+                        print("\nEscolha inválida.")
 
-                        except ValueError:
-                            print("\nDigite um número válido.")
+                    except ValueError:
+                        print("\nDigite um número válido.")
 
                 campos = orcamentos_encontrados[idx - 1]  
             else:

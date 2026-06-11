@@ -4,7 +4,12 @@ import os
 os.system("cls")
 
 while True:
-    escolha = int(input(ui.MENU_PRINCIPAL))
+    try:
+        escolha = int(input(ui.MENU_PRINCIPAL))
+    except ValueError:
+        os.system("cls")
+        print("Informe o valor númerico dos respectivos menus.")
+        continue
     if escolha == 1:
         fc.cadastrar_orcamento(escolha)
 
@@ -27,8 +32,8 @@ while True:
 
     else:
         os.system("cls")
-        print("Menu inválido")
-        break
+        print("opção inválida!")
+        continue
 
     opcao = int(input(ui.MENU_SAIDA))
     
@@ -39,3 +44,4 @@ while True:
     elif opcao == 2:
         os.system("cls")
         print("\n\033[1;31mProgama encerrado.\033[m")
+        break
