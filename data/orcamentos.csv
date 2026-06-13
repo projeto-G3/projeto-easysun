@@ -1,1 +1,4 @@
 cpf_cnpj_orcamento,marca_modulo,modelo_modulo,marca_inversor,modelo_inversor,potencia_kwp,geracao_anual,preco_total,payback,cidade,incidencia_solar
+715.298.754-80,risen energy,rsm144-7-545m,growatt,min 6000tl-x,6.54,9156.0,25999.0,0.5,Recife,45.0
+499.356.314-00,canadian solar,hiku6 550w,huawei,sun2000-6ktl,6.8,9800.0,28000.0,4.5,João pessoa,63.0
+123.456.789-00,jinko solar,tiger neo 580w,fronius,primo 6.0-1,6.8,10500.0,22000.0,3.8,Olinda,89.5
